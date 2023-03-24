@@ -1,15 +1,11 @@
-# Benchmarks for PHP functions
-
-This repository contains benchmarks for PHP library functions.
-
-### Serialisation benchmarks
+# PHP Serialisation benchmarks
 
 This benchmark shows the performance of the PHP serialisation functions and also payload size.
 
-- Native json_encode() and json_decode() functions
-- Native serialize() and unserialize() functions
-- Igbinary extension
-- Valinor
+- Native `json_encode()` and `json_decode()` functions
+- Native `serialize()` and `unserialize()` functions
+- [Igbinary](http://pecl.php.net/package/igbinary) extension
+- [Valinor](https://packagist.org/packages/cuyz/valinor)
 - Protobuf
 - Laravel SerializableClosure
 - [Symfony Serializer Component](https://symfony.com/doc/current/components/serializer.html).
@@ -18,7 +14,7 @@ This benchmark shows the performance of the PHP serialisation functions and also
 php app.php bench:serializers --iterations=10000
 ```
 
-#### Results
+## Results
 ```bash
 Data Encoding
 
@@ -52,73 +48,4 @@ Data Size in Bytes
 +------------+-------------+-----------------+------------------+-------------------------+--------------------------+-----------------+---------------+----------------+---------------+---------------------------+----------------------------+
 | 430        | 430         | 348             | 482              | 635                     | 848                      | 193             | 430           | 430            | 430           | 961                       | 1174                       |
 +------------+-------------+-----------------+------------------+-------------------------+--------------------------+-----------------+---------------+----------------+---------------+---------------------------+----------------------------+
-```
-
-### Containers benchmarks
-
-This benchmark shows the performance of the PHP dependency injection containers.
-
-- [Symfony Dependency Injection Container](https://symfony.com/doc/current/components/dependency_injection.html)
-- [PHP-DI](http://php-di.org/)
-- Laravel Container
-- Spiral Container
-- Yii3 Container
-- League Container
-
-```bash
-php app.php bench:containers --iterations=10000
-```
-
-#### Results
-```bash
-Benching container performance with getting by name.
- ------- -------------------------- ---------------------------------- -------------------------- -------------------------- -------------------------- --------------------------
-  #       Spiral                     Yii                                Laravel                    League                     Symfony                    PHP DI
- ------- -------------------------- ---------------------------------- -------------------------- -------------------------- -------------------------- --------------------------
-  min     0.002976 ms - 0 bytes      0.000651 ms - 0 bytes              0.001793 ms - 0 bytes      0.002365 ms - 0 bytes      0.001292 ms - 0 bytes      0.000561 ms - 0 bytes
-  max     0.061946 ms - 0 bytes      0.657383 ms - 0 bytes              0.100278 ms - 0 bytes      0.721804 ms - 2.00 MB      0.038412 ms - 0 bytes      1.614008 ms - 0 bytes
-  avg     0.003289454 ms - 0 bytes   0.00074492599999999 ms - 0 bytes   0.001965198 ms - 0 bytes   0.002720537 ms - 0 bytes   0.001394952 ms - 0 bytes   0.000651637 ms - 0 bytes
-  total   211.385251 ms - 4.00 MB    179.869189 ms - 4.00 MB            193.79833 ms - 4.00 MB     202.094357 ms - 4.00 MB    201.046873 ms - 4.00 MB    182.343351 ms - 4.00 MB
- ------- -------------------------- ---------------------------------- -------------------------- -------------------------- -------------------------- --------------------------
-  Order   - 6 -                      - 2 -                              - 4 -                      - 5 -                      - 3 -                      - 1 -
- ------- -------------------------- ---------------------------------- -------------------------- -------------------------- -------------------------- --------------------------
-
-Benching container performance with autowiring.
- ------- -------------------------- -------------------------- -------------------------- -------------------------- --------------------------
-  #       Spiral                     Yii                        Laravel                    League                     PHP DI
- ------- -------------------------- -------------------------- -------------------------- -------------------------- --------------------------
-  min     0.035256 ms - 0 bytes      0.007735 ms - 0 bytes      0.018985 ms - 0 bytes      0.02118 ms - 0 bytes       0.00534 ms - 0 bytes
-  max     0.221496 ms - 0 bytes      1.138135 ms - 0 bytes      0.363272 ms - 0 bytes      0.62881 ms - 0 bytes       1.027497 ms - 0 bytes
-  avg     0.037867412 ms - 0 bytes   0.008283834 ms - 0 bytes   0.020277138 ms - 0 bytes   0.022836258 ms - 0 bytes   0.005759382 ms - 0 bytes
-  total   571.741785 ms - 0 bytes    261.904161 ms - 0 bytes    385.299841 ms - 0 bytes    424.260258 ms - 0 bytes    237.05475 ms - 0 bytes
- ------- -------------------------- -------------------------- -------------------------- -------------------------- --------------------------
-  Order   - 5 -                      - 2 -                      - 3 -                      - 4 -                      - 1 -
- ------- -------------------------- -------------------------- -------------------------- -------------------------- --------------------------
-```
-
-### Dot getter benchmarks
-
-This benchmark shows the performance of the PHP functions to get a value from a nested array.
-
-- Laravel Arr::get()
-- Spiral Dot Getter
-- Yii3 ArrayHelper::getValueByPath()
-
-```bash
-php app.php bench:dot-get --iterations=10000
-```
-
-#### Results
-
-```bash
- ------- -------------------------- -------------------------- -------------------------
-  #       Spiral                     Yii                        Laravel
- ------- -------------------------- -------------------------- -------------------------
-  min     0.004098 ms - 0 bytes      0.023695 ms - 0 bytes      0.008105 ms - 0 bytes
-  max     0.517641 ms - 2.00 MB      1.585564 ms - 2.00 MB      1.17793 ms - 2.00 MB
-  avg     0.004604882 ms - 0 bytes   0.025060506 ms - 0 bytes   0.00878889 ms - 0 bytes
-  total   212.07033 ms - 4.00 MB     413.049761 ms - 4.00 MB    246.269149 ms - 4.00 MB
- ------- -------------------------- -------------------------- -------------------------
-  Order   - 1 -                      - 3 -                      - 2 -
- ------- -------------------------- -------------------------- -------------------------
 ```

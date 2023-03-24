@@ -2,7 +2,7 @@
     "name": "spiral/app",
     "type": "project",
     "license": "MIT",
-    "description": "Spiral Application installer",
+    "description": "Benchmark",
     "homepage": "https://spiral.dev",
     "support": {
         "issues": "https://github.com/spiral/app/issues",
@@ -13,20 +13,12 @@
         "ext-sockets": "*",
         "cuyz/valinor": "^1.3",
         "google/protobuf": "^3.7",
-        "illuminate/container": "^10.4",
-        "illuminate/support": "^10.1",
         "laravel/serializable-closure": "^1.3",
-        "league/container": "^4.2",
         "opis/closure": "^3.6",
-        "php-di/php-di": "^7.0",
         "spiral/framework": "dev-master",
         "spiral/roadrunner-cli": "^2.4",
-        "symfony/dependency-injection": "^6.2",
         "symfony/property-access": "^6.2",
-        "symfony/serializer": "^6.2",
-        "yiisoft/arrays": "^3.0",
-        "yiisoft/di": "^1.2",
-        "yiisoft/factory": "^1.1"
+        "symfony/serializer": "^6.2"
     },
     "require-dev": {
         "dragon-code/benchmark": "^2.2",
@@ -69,10 +61,7 @@
         "rr:download-protoc": "rr download-protoc-binary",
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage",
-        "psalm:config": "psalm",
-        "deptrack": [
-            "deptrac analyze --report-uncovered"
-        ]
+        "psalm:config": "psalm"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
